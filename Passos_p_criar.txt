@@ -1,0 +1,45 @@
+Para criar um webservice com C# no VS Code, você pode seguir os seguintes passos:
+
+Abra o VS Code e crie uma nova pasta para o seu projeto.
+Abra o terminal do VS Code e navegue até a pasta do seu projeto.
+Execute o seguinte comando para criar um novo projeto de aplicativo da web:
+
+dotnet new webapi
+
+Abra o arquivo Startup.cs e adicione o seguinte código ao método ConfigureServices:
+C#
+
+services.AddControllers();
+
+
+Adicione o seguinte código ao método Configure:
+C#
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
+Crie um novo controlador clicando com o botão direito na pasta Controllers e selecionando “New File”. Nomeie o arquivo como desejar e adicione o seguinte código:
+C#
+
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("[controller]")]
+public class MeuController : ControllerBase
+{
+    [HttpGet]
+    public string Get()
+    {
+        return "Olá, mundo!";
+    }
+}
+
+Execute o seguinte comando para iniciar o servidor:
+dotnet run
+
+Abra o navegador e acesse http://localhost:5000/MeuController. Você deve ver a mensagem “Olá, mundo!”.
+Espero que isso ajude! Se você tiver outras dúvidas, por favor, não hesite em perguntar
